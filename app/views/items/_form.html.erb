@@ -1,0 +1,15 @@
+<%= form_for @item, url: {action: "create"} do |f| %>
+	
+	<%= f.label :name %> <br>
+	<%= f.text_field :name %>	<br>
+
+	<%= f.label :quantity %> <br>
+	<%= f.number_field :quantity %> <br>
+
+	<%= f.label :list_id %> <br>
+	<%= f.collection_select :list_id, @lists, :id, :name %> 
+
+	<br> <br>
+
+	<%= f.submit %>
+<% end %>

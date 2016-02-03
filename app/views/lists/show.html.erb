@@ -1,0 +1,13 @@
+<h1><strong><%= @list.name %></strong></h1>
+
+<div class="container">
+	<% @items.each do |item| %>
+		<input type="checkbox">
+		<%= item.name %>: <%= item.quantity %>
+		<br>
+	<% end %>
+</div>
+
+<%= link_to "Add new item", new_item_path %> |
+<%= link_to "Back", lists_path %> |
+<%= link_to "Delete List", list_path, method: :delete,  data: {confirm: "Are you sure?" } %>
