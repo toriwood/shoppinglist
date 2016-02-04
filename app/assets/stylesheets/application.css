@@ -13,3 +13,13 @@
  *= require_tree .
  *= require_self
  */
+
+.active {
+	font-style: normal;
+}
+
+.complete {
+	color: #8c8c8c;
+  font-style: italic;
+  text-decoration: line-through;
+}

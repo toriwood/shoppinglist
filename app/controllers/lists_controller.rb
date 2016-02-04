@@ -19,18 +19,17 @@ class ListsController < ApplicationController
 	end
 
 	def show
-		@list = List.find_by_id(params[:id])
+		@list = List.find(params[:id])
 		@items = Item.all
-		
 	end
 
 	def edit
-		@list = List.find_by_id(params[:id])
+		@list = List.find(params[:id])
 		@items = Item.all
 	end
 
 	def destroy
-		@list = List.find_by_id(params[:id])
+		@list = List.find(params[:id])
     @list.destroy
     redirect_to :lists
   end

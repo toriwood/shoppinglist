@@ -14,7 +14,7 @@ class ItemsController < ApplicationController
 		@item = Item.new(item_params)
 
 		if @item.save
-			redirect_to :items => :index
+			redirect_to controller: "lists", action: "show", id: @item.list_id
 		else
 			render :text => "Item not saved."
 		end
@@ -22,18 +22,36 @@ class ItemsController < ApplicationController
 	end
 	
 	def show
-		@item = Item.find_by_id(:id)
-		
+		@item = Item.find(params[:id])		
 	end
 
 	def edit
 		@lists = List.all
 	end
 
+	def update
+		@item = Item.find(params[:id])
+		@id = @item.list_id
+			if @item.state == "complete"
+				@item.state = "active"
+			else
+				@item.state = "complete"
+			end
+		@item.save
+		redirect_to controller: "lists", action: "show", id: @id
+	end
+
+	def destroy
+		@item = Item.find(params[:id])
+		@id = @item.list_id
+    @item.destroy
+    redirect_to controller: "lists", action: "show", id: @id
+  end
+
 	private
 
 	def item_params
-		params.require(:item).permit(:name, :quantity, :list_id)		
+		params.require(:item).permit(:name, :quantity, :list_id, :state)		
 	end
 
 
