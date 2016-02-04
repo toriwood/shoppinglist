@@ -1,9 +1,11 @@
+
 <%= form_for @list, url: {action: "create"} do |f| %>
 	
+	<div class="form-group">
 	<%= f.label :name %> <br>
-	<%= f.text_field :name %>	<br>
-	<br>
-	<%= f.submit %>
+	<%= f.text_field :name, class: "form-control" %>
+	</div>
+	<%= f.submit "Create List", class: "btn btn-primary" %>
 
 <% end %>
 

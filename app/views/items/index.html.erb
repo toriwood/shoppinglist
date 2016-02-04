@@ -1,6 +1,28 @@
-<h1>Listing Items</h1>
+<div class="panel panel-default">
 
-<% @items.each do |item| %>
-	<%= item.name %> 
-	<%= item.quantity %> <br>
-<% end %>
+	<div class="panel-heading">
+		<h3>Listing Items</h3>
+	</div>
+
+	<div class="panel-body">
+		<div class="row">
+			<div class="col-md-4 bold">Item</div>
+			<div class="col-md-4 bold">Quantity</div>
+			<div class="col-md-4 bold">List</div>
+		</div>
+		<% @items.each do |item| %>
+		<div class="row">
+			<div class="col-md-4"><%= item.name %></div>
+			<div class="col-md-4"><%= item.quantity %></div>
+			<div class="col-md-4">
+				<%= link_to item.list.name, list_path(item.list_id) %>
+			</div>
+		</div>
+		<% end %>
+	</div>
+	
+	<div class="panel-footer">
+		<%= link_to "Add New Item", new_item_path, class: "btn btn-primary" %>
+		<%= link_to "Add New List", new_list_path, class: "btn btn-primary" %>
+	</div>
+</div>
