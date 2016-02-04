@@ -1,14 +1,20 @@
 <div class="panel panel-default">
 		<div class="panel-heading">
-			<h1><strong><%= @list.name %></strong></h1>
+			<h3><strong><%= @list.name %></strong></h3>
 		</div>
 		<div class="panel-body">
 		<%= form_tag do %>
 			<% @list.items.each do |item| %>
-					<%= link_to check_box_tag(item), item, method: :put %>
-					<%= label_tag(item, "#{item.name}: #{item.quantity}", class: item.state) %>
-				<%= link_to "Delete Item", item, method: :delete, data: {confirm: "Are you sure?" }, class: "btn btn-danger btn-xs" %>
-				<br>
+		<div class="row">
+					<div class="col-md-2">
+						<%= link_to check_box_tag(item), item, method: :put %>
+						<%= label_tag(item, "#{item.name}: #{item.quantity}", class: item.state) %>
+					</div>
+
+				<div class="col-md-2">	
+					<%= link_to "Delete Item", item, method: :delete, data: {confirm: "Are you sure?" }, class: "btn btn-danger btn-xs" %>
+				</div>
+			</div>
 			<% end %>
 		<% end %>
 	</div>
